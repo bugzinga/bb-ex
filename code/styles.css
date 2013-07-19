@@ -1,0 +1,23 @@
+
+#content {
+	width: 100px;
+}
+
+.option {
+	cursor: pointer;
+	padding: 3px 4px;
+	opacity: 0.6
+}
+
+.option:hover {
+	opacity: 1;
+}
+
+.disabled {
+	color: rgb(220, 220, 220);
+	text-decoration: line-through;
+}
+
+.disabled:hover {
+	opacity: 0.8;
+}
