@@ -1,5 +1,5 @@
 
-var tabSize = null;
+var tabSize = 4;
 var originalHtml = null;
 
 function update(options) {

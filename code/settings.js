@@ -58,9 +58,9 @@ function initialize(options) {
 $(function() {
 	chrome.storage.sync.get('bbex', function(storage) {
 		var options = storage['bbex'];
-		if (!options || (options.version == '0.0.1') || (options.version == '0.0.2')) {
+		if (!options || (options.version == '0.0.1') || (options.version == '0.0.2') || (options.version == '0.0.3')) {
 			options = {
-				'version': '0.0.3',
+				'version': '0.0.4',
 				'0' : { 'name' : 'Repository', 'className' : 'repo', 'enabled': true },
 				'1' : { 'name' : 'Title', 'className' : 'text', 'enabled': true },
 				'2' : { 'name' : 'Type', 'className' : 'type', 'enabled': true },
