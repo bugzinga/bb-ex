@@ -1,6 +1,18 @@
 
 #content {
-	width: 100px;
+	width: 180px;
+	font-size: 16px;
+}
+
+.header {
+	text-align: center;
+	padding: 5px 7px;
+	color: white;
+	background-color: rgb(238, 170, 170);
+}
+
+.list {
+	margin-bottom: 10px;
 }
 
 .option {
@@ -20,4 +32,8 @@
 
 .disabled:hover {
 	opacity: 0.8;
+}
+
+#tabSize .disabled {
+	text-decoration: none;
 }
