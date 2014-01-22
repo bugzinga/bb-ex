@@ -77,8 +77,8 @@ $(function() {
 				initialize(options);
 			});
 		} else {
-			if (options['version'] == '0.0.4') {
-				options['version'] = '0.0.5';
+			if ((options['version'] == '0.0.4') || (options['version'] == '0.0.5'))  {
+				options['version'] = '0.0.6';
 				chrome.storage.sync.set({ 'bbex' : options }, function() {
 					initialize(options);
 				});

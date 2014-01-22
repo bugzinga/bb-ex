@@ -44,6 +44,10 @@ function fixSpaces(reset) {
 	if (fileSourceElement.length > 0) {
 		fileSourceElement.css('tab-size', tabSize.toString());
 	}
+	var scrollableFilePane = $('.scrollable-file-pane');
+	if (scrollableFilePane.length > 0) {
+		scrollableFilePane.css('tab-size', tabSize.toString());
+	}
 }
 
 chrome.storage.onChanged.addListener(function(changes, areaName) {
@@ -59,14 +63,14 @@ $(function() {
 	var observer = new MutationObserver(function(mutations) {
 		mutations.forEach(function(mutation) {
 			$.each(mutation.addedNodes, function(index, value) {
-				if (value.id == 'editor-container') {
+				if ((value.id == 'editor-container') || $(value).hasClass('diffract')) {
 					fixSpaces(true);
 				}
 			});
 		});
 	});
-	var config = { childList: true };
-	if ($('#source-container').length > 0) {
-		observer.observe($('#source-container').get(0), config);
+	var config = { childList: true, subtree: true };
+	if ($('html').length > 0) {
+		observer.observe($('html').get(0), config);
 	}
 });
