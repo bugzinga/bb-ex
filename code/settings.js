@@ -60,7 +60,7 @@ $(function() {
 		var options = storage['bbex'];
 		if (!options || (options.version == '0.0.1') || (options.version == '0.0.2') || (options.version == '0.0.3')) {
 			options = {
-				'version': '0.0.4',
+				'version': '0.0.5',
 				'0' : { 'name' : 'Repository', 'className' : 'repo', 'enabled': true },
 				'1' : { 'name' : 'Title', 'className' : 'text', 'enabled': true },
 				'2' : { 'name' : 'Type', 'className' : 'type', 'enabled': true },
@@ -77,7 +77,14 @@ $(function() {
 				initialize(options);
 			});
 		} else {
-			initialize(options);
+			if (options['version'] == '0.0.4') {
+				options['version'] = '0.0.5';
+				chrome.storage.sync.set({ 'bbex' : options }, function() {
+					initialize(options);
+				});
+			} else {
+				initialize(options);
+			}
 		}
 	});
 });

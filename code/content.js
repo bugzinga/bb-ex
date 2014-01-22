@@ -40,6 +40,10 @@ function fixSpaces(reset) {
 	if (refractContainer.length > 0) {
 		refractContainer.css('tab-size', tabSize.toString());
 	}
+	var fileSourceElement = $('.file-source');
+	if (fileSourceElement.length > 0) {
+		fileSourceElement.css('tab-size', tabSize.toString());
+	}
 }
 
 chrome.storage.onChanged.addListener(function(changes, areaName) {
