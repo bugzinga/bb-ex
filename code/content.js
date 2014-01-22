@@ -27,14 +27,13 @@ function update(options) {
 }
 
 function fixSpaces(reset) {
-	var code = $('#editor-container');
-	if ((code.length > 0) && code.html()) {
-		if (!originalHtml || reset) {
-			originalHtml = code.html();
-		}
-		if (originalHtml) {
-			code.html(originalHtml.replace(/[ ]{8}/g, new Array(tabSize + 1).join(' ')));
-		}
+	var editorContainer = $('#editor-container');
+	if (editorContainer.length > 0) {
+		editorContainer.css('tab-size', tabSize.toString());
+	}
+	var sourceContainer = $('.diff-container .source');
+	if (sourceContainer.length > 0) {
+		sourceContainer.css('tab-size', tabSize.toString());
 	}
 	var refractContainer = $('.refract-container .source');
 	if (refractContainer.length > 0) {
