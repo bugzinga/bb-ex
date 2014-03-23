@@ -4,6 +4,9 @@ var originalHtml = null;
 
 function update(options) {
 	if (options) {
+		var classes = $.map(options, function(value, index) {
+			return value.className;
+		});
 		$.each(options, function(key, value) {
 			switch (key) {
 				case 'tab':
@@ -13,9 +16,24 @@ function update(options) {
 				case 'version':
 					break;
 				default:
-					var className = value['className'];
-					var elements = $('.issues-list td[class*=' + className + '], .issues-list th[class*=' + className + ']');
-					if (!value['enabled']) {
+					var className = value.className;
+					var elements = $('.issues-list tr td[class*=' + className + '], .issues-list tr th[class*=' + className + ']');
+					if (!value.enabled) {
+						elements.hide();
+					} else {
+						elements.show();
+					}
+					elements = $('.issues-list tr td, .issues-list tr th').filter(function() {
+						var valid = true;
+						for (var i = 0; i < classes.length; i++) {
+							if ($(this).hasClass(classes[i])) {
+								valid = false;
+								break;
+							}
+						}
+						return valid && ($(this).find('a[title*=' + className + '], a[title*=' + (className[0].toUpperCase() + className.substring(1)) + ']').length > 0);
+					});
+					if (!value.enabled) {
 						elements.hide();
 					} else {
 						elements.show();

@@ -58,16 +58,16 @@ function initialize(options) {
 $(function() {
 	chrome.storage.sync.get('bbex', function(storage) {
 		var options = storage['bbex'];
-		if (!options || (options.version == '0.0.1') || (options.version == '0.0.2') || (options.version == '0.0.3')) {
+		if (!options || (options.version === '0.0.1') || (options.version === '0.0.2') || (options.version === '0.0.3')) {
 			options = {
-				'version': '0.0.5',
+				'version': '0.0.8',
 				'0' : { 'name' : 'Repository', 'className' : 'repo', 'enabled': true },
 				'1' : { 'name' : 'Title', 'className' : 'text', 'enabled': true },
 				'2' : { 'name' : 'Type', 'className' : 'type', 'enabled': true },
 				'3' : { 'name' : 'Priotiry', 'className' : 'priority', 'enabled': true },
 				'4' : { 'name' : 'Status', 'className' : 'state', 'enabled': true },
 				'5' : { 'name' : 'Votes', 'className' : 'votes', 'enabled': true },
-				'6' : { 'name' : 'Assignee', 'className' : 'person', 'enabled': true },
+				'6' : { 'name' : 'Assignee', 'className' : 'user', 'enabled': true },
 				'7' : { 'name' : 'Milestone', 'className' : 'milestone', 'enabled': true },
 				'8' : { 'name' : 'Version', 'className' : 'version', 'enabled': true },
 				'9' : { 'name' : 'Dates', 'className' : 'date', 'enabled': true },
@@ -77,8 +77,9 @@ $(function() {
 				initialize(options);
 			});
 		} else {
-			if ((options['version'] == '0.0.4') || (options['version'] == '0.0.5'))  {
-				options['version'] = '0.0.6';
+			if (options.version !== '0.0.8')  {
+				options.version = '0.0.8';
+				options['6']['className'] = 'user';
 				chrome.storage.sync.set({ 'bbex' : options }, function() {
 					initialize(options);
 				});
