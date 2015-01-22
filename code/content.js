@@ -90,4 +90,5 @@ $(function() {
 	if ($('html').length > 0) {
 		observer.observe($('html').get(0), config);
 	}
+	$('.milestone > div').width('auto');
 });
