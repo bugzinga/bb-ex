@@ -80,7 +80,10 @@ $(function() {
 	var observer = new MutationObserver(function(mutations) {
 		mutations.forEach(function(mutation) {
 			$.each(mutation.addedNodes, function(index, value) {
-				if ((value.id == 'editor-container') || $(value).hasClass('diffract')) {
+				console.log(value.id);
+				if ((value.id == 'editor-container')
+					|| (value.id == 'pullrequest-diff')
+					|| $(value).hasClass('diffract')) {
 					fixSpaces(true);
 				}
 			});
