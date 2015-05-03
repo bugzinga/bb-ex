@@ -94,4 +94,5 @@ $(function() {
 		observer.observe($('html').get(0), config);
 	}
 	$('.milestone > div').width('auto');
+	$('.version > div').width('auto').css('max-width', '200px');
 });
